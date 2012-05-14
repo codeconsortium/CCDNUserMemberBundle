@@ -1,3 +1,5 @@
+layout.header_links.members: 'Members'
+
 crumbs.members: 'Members'
 
 title.member: 'Members.'

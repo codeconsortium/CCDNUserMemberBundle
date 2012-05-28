@@ -32,11 +32,13 @@
 
 {% include 'CCDNComponentCommonBundle:Flashes:flashes.html.twig' %}
 
-<div class="section_wrap_square">
+<div class="section_wrap_standalone">
 	<div class="section_header">
 		<h2>{{ 'title.member' | trans({}, 'CCDNUserMemberBundle') }}</h2>
 	</div>
-	
+</div>	
+
+<div class="section_wrap_top">
 	<div class="section_tool_strip">
 		<div class="h_align_centre">		
 		{% for letter in "A".."Z" %}
@@ -44,7 +46,8 @@
 		{% endfor %}
 		</div>
 	</div>
-	
+</div>
+<div class="section_wrap_bottom">
 	{% if pager.haveToPaginate %}
 	<div class="pagerfanta">
 		{{ pagerfanta(pager, 'default', {'routeName': pager_route } ) }}

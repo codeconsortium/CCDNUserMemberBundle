@@ -48,10 +48,8 @@ class Configuration implements ConfigurationInterface
 				->arrayNode('template')
 					->children()
 						->scalarNode('engine')->defaultValue('twig')->end()
-						->scalarNode('theme')->defaultValue('CCDNUserMemberBundle:Form:fields.html.twig')->end()
 					->end()
 				->end()
-				->scalarNode('members_per_page')->defaultValue(50)->end()
 			->end();
 		
 		$this->addMemberSection($rootNode);
@@ -71,10 +69,15 @@ class Configuration implements ConfigurationInterface
 		$node
 			->children()
 				->arrayNode('member')
+					->addDefaultsIfNotSet()
+					->canBeUnset()
 					->children()
-						->arrayNode('layout_templates')
+						->arrayNode('list')
+							->addDefaultsIfNotSet()
 							->children()
-								->scalarNode('list')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+								->scalarNode('layout_template')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+								->scalarNode('members_per_page')->defaultValue(50)->end()
+								->scalarNode('member_since_datetime_format')->defaultValue('d-m-Y - H:i')->end()
 							->end()
 						->end()
 					->end()

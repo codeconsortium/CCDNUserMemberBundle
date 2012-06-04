@@ -42,7 +42,7 @@ class MemberController extends ContainerAware
 				
 		$members_paginated = $this->container->get('ccdn_user_user.user.repository')->findAllPaginated();
 
-		$members_per_page = $this->container->getParameter('ccdn_user_member.members_per_page');
+		$members_per_page = $this->container->getParameter('ccdn_user_member.member.list.members_per_page');
 		$members_paginated->setMaxPerPage($members_per_page);
 		$members_paginated->setCurrentPage($page, false, true);
 		

@@ -41,10 +41,7 @@ class CCDNUserMemberExtension extends Extension
 
 		$container->setParameter('ccdn_user_member.user.profile_route', $config['user']['profile_route']);
 		$container->setParameter('ccdn_user_member.template.engine', $config['template']['engine']);
-		$container->setParameter('ccdn_user_member.template.theme', $config['template']['theme']);
-		
-		$container->setParameter('ccdn_user_member.members_per_page', $config['members_per_page']);
-		
+				
 		$this->getMemberSection($container, $config);
     }
 	
@@ -57,7 +54,10 @@ class CCDNUserMemberExtension extends Extension
 	 */
 	private function getMemberSection($container, $config)
 	{
-		$container->setParameter('ccdn_user_member.member.layout_templates.list', $config['member']['layout_templates']['list']);
+		$container->setParameter('ccdn_user_member.member.list.layout_template', $config['member']['list']['layout_template']);
+		$container->setParameter('ccdn_user_member.member.list.members_per_page', $config['member']['list']['members_per_page']);
+		$container->setParameter('ccdn_user_member.member.list.member_since_datetime_format', $config['member']['list']['member_since_datetime_format']);
+		
 	}
 	
 	

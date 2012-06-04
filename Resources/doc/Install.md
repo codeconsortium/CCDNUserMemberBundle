@@ -93,13 +93,8 @@ In your app/config/config.yml add:
 ccdn_user_member:
     user:
         profile_route: cc_profile_show_by_id 
-    members_per_page: 50       
     template:
         engine: twig
-        theme: CCDNUserMemberBundle:Form:fields.html.twig
-    member:
-        layout_templates:
-            list: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
 
 ```   
 
@@ -146,4 +141,5 @@ Installation should now be complete!
 
 If you need further help/support, have suggestions or want to contribute please join the community at [Code Consortium](http://www.codeconsortium.com)
 
-[Return back to the docs index](http://github.com/codeconsortium/CCDNUserMemberBundle/blob/master/Resources/doc/index.md).
+- [Return back to the docs index](index.md).
+- [Configuration Reference](configuration_reference.md).

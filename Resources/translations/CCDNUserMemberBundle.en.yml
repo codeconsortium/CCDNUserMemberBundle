@@ -4,6 +4,11 @@ crumbs.members: 'Members'
 
 title.member: 'Members.'
 
+sidebar.header.navigation: 'Navigation'
+sidebar.link.members: 'Members'
+sidebar.link.account.view: 'Account'
+sidebar.link.profile.view: 'Profile'
+
 member.table.head.username: username
 member.table.head.website: website
 member.table.head.pm: PM

@@ -35,11 +35,14 @@ class MemberController extends ContainerAware
 	 */
 	public function showAction($page)
 	{
-		if ( ! $this->container->get('security.context')->isGranted('ROLE_USER'))
+		if ($this->container->getParameter('ccdn_user_member.member.list.requires_login') == 'true')
 		{
-			throw new AccessDeniedException('You do not have access to this section.');
+			if ( ! $this->container->get('security.context')->isGranted('ROLE_USER'))
+			{
+				throw new AccessDeniedException('You do not have access to this section.');
+			}
 		}
-				
+		
 		$members_paginated = $this->container->get('ccdn_user_user.user.repository')->findAllPaginated();
 
 		$members_per_page = $this->container->getParameter('ccdn_user_member.member.list.members_per_page');
@@ -72,7 +75,7 @@ class MemberController extends ContainerAware
 
 		$members_paginated = $this->container->get('ccdn_user_user.user.repository')->findAllFilteredPaginated($alpha);
 
-		$members_per_page = $this->container->getParameter('ccdn_user_member.members_per_page');
+		$members_per_page = $this->container->getParameter('ccdn_user_member.member.list.members_per_page');
 		$members_paginated->setMaxPerPage($members_per_page);
 		$members_paginated->setCurrentPage($page, false, true);
 		
@@ -83,6 +86,7 @@ class MemberController extends ContainerAware
 			'pager_route' => 'cc_members_alpha_paginated',
 			'pager' => $members_paginated,
 			'members' => $members,
+			'alpha' => $alpha,
 		));	
 	}
 	

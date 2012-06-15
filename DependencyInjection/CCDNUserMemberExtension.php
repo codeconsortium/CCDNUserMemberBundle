@@ -41,8 +41,10 @@ class CCDNUserMemberExtension extends Extension
 
 		$container->setParameter('ccdn_user_member.user.profile_route', $config['user']['profile_route']);
 		$container->setParameter('ccdn_user_member.template.engine', $config['template']['engine']);
-				
+		$container->setParameter('ccdn_user_member.login_route', $config['login_route']);
+	
 		$this->getMemberSection($container, $config);
+		$this->getSidebarSection($container, $config);
     }
 	
 	
@@ -57,8 +59,22 @@ class CCDNUserMemberExtension extends Extension
 		$container->setParameter('ccdn_user_member.member.list.layout_template', $config['member']['list']['layout_template']);
 		$container->setParameter('ccdn_user_member.member.list.members_per_page', $config['member']['list']['members_per_page']);
 		$container->setParameter('ccdn_user_member.member.list.member_since_datetime_format', $config['member']['list']['member_since_datetime_format']);
-		
+		$container->setParameter('ccdn_user_member.member.list.requires_login', $config['member']['list']['requires_login']);
+				
 	}
 	
+	
+	
+	/**
+	 *
+	 * @access private
+	 * @param $container, $config
+	 */
+	private function getSidebarSection($container, $config)
+	{
+		$container->setParameter('ccdn_user_member.sidebar.account_route', $config['sidebar']['account_route']);
+		$container->setParameter('ccdn_user_member.sidebar.profile_route', $config['sidebar']['profile_route']);
+		
+	}
 	
 }

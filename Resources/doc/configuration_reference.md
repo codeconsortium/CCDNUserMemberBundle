@@ -12,11 +12,16 @@ ccdn_user_member:
         profile_route: cc_profile_show_by_id 
     template:
         engine: twig
-#    member:
-#        list:
+    login_route: fos_user_security_login
+    member:
+        list:
 #            layout_template: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
 #            members_per_page: 50
-#            member_since_datetime_format: "d-m-Y - H:i"
+#            member_since_datetime_format: "d-m-Y - H:i"     
+            requires_login: false
+    sidebar:
+        account_route: cc_user_account_show
+        profile_route: cc_profile_show
 
 ```
 

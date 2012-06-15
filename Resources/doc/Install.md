@@ -95,6 +95,10 @@ ccdn_user_member:
         profile_route: cc_profile_show_by_id 
     template:
         engine: twig
+    login_route: fos_user_security_login
+    sidebar:
+        account_route: cc_user_account_show
+        profile_route: cc_profile_show
 
 ```   
 

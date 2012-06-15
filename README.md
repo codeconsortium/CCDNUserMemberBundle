@@ -35,6 +35,7 @@ MemberBundle Provides the following features:
 1. List registered members on the site.
 2. Filter uses alphabetically.
 3. Visit users profile (profile route is set in app/config/config.yml).
+4. Utilises Twitter-Bootstrap interface by default.
 
 Before installation of this bundle, you can download the [Sandbox](https://github.com/codeconsortium/CCDNSandBox) for testing/development and feature review, or alternatively see the product in use at [CodeConsortium](http://www.codeconsortium.com).
 

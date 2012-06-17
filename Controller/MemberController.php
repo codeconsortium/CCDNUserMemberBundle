@@ -68,9 +68,12 @@ class MemberController extends ContainerAware
 	 */
 	public function showFilteredAction($page, $alpha)
 	{
-		if ( ! $this->container->get('security.context')->isGranted('ROLE_USER'))
+		if ($this->container->getParameter('ccdn_user_member.member.list.requires_login') == 'true')
 		{
-			throw new AccessDeniedException('You do not have access to this section.');
+			if ( ! $this->container->get('security.context')->isGranted('ROLE_USER'))
+			{
+				throw new AccessDeniedException('You do not have access to this section.');
+			}
 		}
 
 		$members_paginated = $this->container->get('ccdn_user_user.user.repository')->findAllFilteredPaginated($alpha);

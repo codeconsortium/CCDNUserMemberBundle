@@ -9,6 +9,8 @@ sidebar.link.members: 'Members'
 sidebar.link.account.view: 'Account'
 sidebar.link.profile.view: 'Profile'
 
+member.filter.all: 'All'
+
 member.table.head.username: username
 member.table.head.website: website
 member.table.head.pm: PM

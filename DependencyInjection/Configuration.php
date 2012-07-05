@@ -77,7 +77,7 @@ class Configuration implements ConfigurationInterface
 						->arrayNode('list')
 							->addDefaultsIfNotSet()
 							->children()
-								->scalarNode('layout_template')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_left.html.twig')->end()
+								->scalarNode('layout_template')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_right.html.twig')->end()
 								->scalarNode('members_per_page')->defaultValue(50)->end()
 								->scalarNode('member_since_datetime_format')->defaultValue('d-m-Y - H:i')->end()
 								->scalarNode('requires_login')->defaultValue('true')->end()

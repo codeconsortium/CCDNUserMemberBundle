@@ -127,6 +127,10 @@ class Configuration implements ConfigurationInterface
 					->children()
 						->scalarNode('account_route')->defaultValue('cc_user_account_show')->end()
 						->scalarNode('profile_route')->defaultValue('cc_profile_show')->end()
+						->scalarNode('registration_route')->defaultValue('fos_user_registration_register')->end()
+						->scalarNode('login_route')->defaultValue('fos_user_security_login')->end()
+						->scalarNode('logout_route')->defaultValue('fos_user_security_logout')->end()
+						->scalarNode('reset_route')->defaultValue('fos_user_resetting_request')->end()
 					->end()
 				->end()
 			->end();

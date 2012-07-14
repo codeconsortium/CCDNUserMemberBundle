@@ -8,6 +8,9 @@ sidebar.header.navigation: 'Navigation'
 sidebar.link.members: 'Members'
 sidebar.link.account.view: 'Account'
 sidebar.link.profile.view: 'Profile'
+sidebar.link.login: 'Login'
+sidebar.link.register: 'Register'
+sidebar.link.reset: 'Forgot Password'
 
 member.filter.all: 'All'
 

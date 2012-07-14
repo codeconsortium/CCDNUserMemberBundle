@@ -28,6 +28,19 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class CCDNUserMemberExtension extends Extension
 {
+	
+	
+	
+    /**
+     * {@inheritDoc}
+     */
+	public function getAlias()
+	{
+		return 'ccdn_user_member';
+	}
+	
+	
+	
     /**
      * {@inheritDoc}
      */

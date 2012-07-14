@@ -4,7 +4,7 @@
 	{{ parent() }}
 {% endblock %}
 
-{% block title %}{{- 'title.member' | trans({}, 'CCDNUserMemberBundle') }}{% endblock -%}
+{% block title %}{{- truncDot('title.member' | trans({}, 'CCDNUserMemberBundle'), param('ccdn_user_member.seo.title_length')) -}}{% endblock -%}
 
 {% block sidebar %}
 	{{ parent() }}

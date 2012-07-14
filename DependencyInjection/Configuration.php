@@ -53,12 +53,34 @@ class Configuration implements ConfigurationInterface
 				->scalarNode('login_route')->defaultValue('fos_user_security_login')->end()
 			->end();
 		
+		$this->addSEOSection($rootNode);
 		$this->addMemberSection($rootNode);
 		$this->addSidebarSection($rootNode);
 		
         return $treeBuilder;
     }
-
+	
+	
+	
+	/**
+	 *
+	 * @access protected
+	 * @param ArrayNodeDefinition $node
+	 */
+	protected function addSEOSection(ArrayNodeDefinition $node)
+	{
+		$node
+			->children()
+				->arrayNode('seo')
+					->addDefaultsIfNotSet()
+					->canBeUnset()
+					->children()
+						->scalarNode('title_length')->defaultValue('67')->end()
+					->end()
+				->end()
+			->end();
+	}
+	
 	
 
 	/**

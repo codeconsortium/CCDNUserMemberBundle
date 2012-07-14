@@ -43,9 +43,22 @@ class CCDNUserMemberExtension extends Extension
 		$container->setParameter('ccdn_user_member.template.engine', $config['template']['engine']);
 		$container->setParameter('ccdn_user_member.login_route', $config['login_route']);
 	
+		$this->getSEOSection($container, $config);
 		$this->getMemberSection($container, $config);
 		$this->getSidebarSection($container, $config);
     }
+	
+	
+	
+	/**
+	 *
+	 * @access protected
+	 * @param $container, $config
+	 */
+	protected function getSEOSection($container, $config)
+	{
+	    $container->setParameter('ccdn_user_member.seo.title_length', $config['seo']['title_length']);
+	}
 	
 	
 	

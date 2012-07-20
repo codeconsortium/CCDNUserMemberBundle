@@ -102,7 +102,7 @@ class Configuration implements ConfigurationInterface
 								->scalarNode('layout_template')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_right.html.twig')->end()
 								->scalarNode('members_per_page')->defaultValue(50)->end()
 								->scalarNode('member_since_datetime_format')->defaultValue('d-m-Y - H:i')->end()
-								->scalarNode('requires_login')->defaultValue('true')->end()
+								->scalarNode('requires_login')->defaultValue(true)->end()
 							->end()
 						->end()
 					->end()

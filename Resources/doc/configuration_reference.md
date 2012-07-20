@@ -13,15 +13,21 @@ ccdn_user_member:
     template:
         engine: twig
     login_route: fos_user_security_login
+	seo:
+		title_length: 67
     member:
         list:
-#            layout_template: CCDNComponentCommonBundle:Layout:layout_body_left.html.twig
-#            members_per_page: 50
-#            member_since_datetime_format: "d-m-Y - H:i"     
-            requires_login: false
+            layout_template: CCDNComponentCommonBundle:Layout:layout_body_right.html.twig
+            members_per_page: 50
+            member_since_datetime_format: "d-m-Y - H:i"     
+            requires_login: true
     sidebar:
         account_route: cc_user_account_show
         profile_route: cc_profile_show
+		registration_route: fos_user_registration_register
+		login_route: fos_user_security_login
+		logout_route: fos_user_security_logout
+		reset_route: fos_user_resetting_request
 
 ```
 

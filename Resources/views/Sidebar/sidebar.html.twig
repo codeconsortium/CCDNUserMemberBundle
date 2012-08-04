@@ -6,12 +6,12 @@
 	<li class="divider"></li>
 
 	{%- if is_granted("ROLE_USER") -%}
-		
+
 		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.account_route')) -}}"><i class="icon-cog"></i>&nbsp;{{- 'sidebar.link.account.view' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
 		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.profile_route')) -}}"><i class="icon-user"></i>&nbsp;{{- 'sidebar.link.profile.view' | trans({}, 'CCDNUserMemberBundle') -}}</a></li>
-			
+
 	{%- else -%}
-		
+
 		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.login_route')) -}}"><i class="icon-user"></i>&nbsp;{{- 'sidebar.link.login' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
 		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.registration_route')) -}}"><i class="icon-asterisk"></i>&nbsp;{{- 'sidebar.link.register' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
 		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.reset_route')) -}}"><i class="icon-lock"></i>&nbsp;{{- 'sidebar.link.reset' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>

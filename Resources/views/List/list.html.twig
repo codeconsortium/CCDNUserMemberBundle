@@ -8,22 +8,22 @@
 
 {% block sidebar %}
 	{{ parent() }}
-	
+
 	{%- include 'CCDNUserMemberBundle:Sidebar:sidebar.html.twig' -%}
-	
+
 {% endblock %}
 
 {% block body %}
 
 	{%- spaceless -%}
-	
+
 	{%- include 'CCDNComponentCommonBundle:Flashes:flashes.html.twig' -%}
 
 	<h2>{{- 'title.member' | trans({}, 'CCDNUserMemberBundle') -}}</h2>
 
 	<div class="btn-toolbar center" style="vertical-align:top;margin-top:0px;">
 		{%- set route = app.request.attributes.get('_route') -%}
-		
+
 		<a class="btn{{- route == 'cc_members_index' ? ' active':'' -}}" style="display:inline-block;vertical-align:top;margin-top:0px;" href="{{- path('cc_members_index') -}}">{{- 'member.filter.all' |trans({}, 'CCDNUserMemberBundle') -}}</a>&nbsp;
 		<div class="btn-group">
 		{%- for letter in "A".."Z" -%}
@@ -42,11 +42,11 @@
 				<th class="left">{{- 'member.table.head.username' | trans({}, 'CCDNUserMemberBundle') -}}</th>
 				<th class="center">{{- 'member.table.head.website' | trans({}, 'CCDNUserMemberBundle') -}}</th>
 				<th class="center">{{- 'member.table.head.pm' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'member.table.head.aim' | trans({}, 'CCDNUserMemberBundle') -}}</th>	
-				<th class="center">{{- 'member.table.head.msn' | trans({}, 'CCDNUserMemberBundle') -}}</th>	
-				<th class="center">{{- 'member.table.head.icq' | trans({}, 'CCDNUserMemberBundle') -}}</th>	
+				<th class="center">{{- 'member.table.head.aim' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="center">{{- 'member.table.head.msn' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="center">{{- 'member.table.head.icq' | trans({}, 'CCDNUserMemberBundle') -}}</th>
 				<th class="center">{{- 'member.table.head.yahoo' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'member.table.head.joined_date' | trans({}, 'CCDNUserMemberBundle') -}}</th>				
+				<th class="center">{{- 'member.table.head.joined_date' | trans({}, 'CCDNUserMemberBundle') -}}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -98,11 +98,11 @@
 		{%- endfor -%}
 		</tbody>
 	</table>
-	
+
 	{%- if pager.haveToPaginate -%}
 		{{- pagerfanta(pager, 'twitter_bootstrap', {'routeName': pager_route } ) -}}
 	{%- endif -%}
-	
+
 	{%- endspaceless -%}
-	
+
 {% endblock %}

@@ -92,13 +92,13 @@ In your app/config/config.yml add:
 #
 ccdn_user_member:
     user:
-        profile_route: cc_profile_show_by_id 
+        profile_route: ccdn_user_profile_show_by_id 
     template:
         engine: twig
     login_route: fos_user_security_login
     sidebar:
-	    account_route: cc_user_account_show
-	    profile_route: cc_profile_show
+	    account_route: ccdn_user_user_account_show
+	    profile_route: ccdn_user_profile_show
 		registration_route: fos_user_registration_register
 		login_route: fos_user_security_login
 		logout_route: fos_user_security_logout

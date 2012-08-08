@@ -25,9 +25,9 @@
 		{%- set route = app.request.attributes.get('_route') -%}
 
 		<div class="btn-group">
-			<a class="btn{{- route == 'cc_members_index' ? ' active':'' -}}" style="display:inline-block;vertical-align:top;margin-top:0px;" href="{{- path('cc_members_index') -}}">{{- 'member.filter.all' |trans({}, 'CCDNUserMemberBundle') -}}</a>
+			<a class="btn{{- route == 'ccdn_user_member_index' ? ' active':'' -}}" style="display:inline-block;vertical-align:top;margin-top:0px;" href="{{- path('ccdn_user_member_index') -}}">{{- 'member.filter.all' |trans({}, 'CCDNUserMemberBundle') -}}</a>
 			{%- for letter in "A".."Z" -%}
-				<a class="btn{%- if alpha is defined -%}{{- (letter == alpha) ? ' active' : '' -}}{%- endif -%}" href="{{- path('cc_members_alpha_index', {'alpha': letter}) -}}">{{- letter -}}</a>
+				<a class="btn{%- if alpha is defined -%}{{- (letter == alpha) ? ' active' : '' -}}{%- endif -%}" href="{{- path('ccdn_user_member_alpha_index', {'alpha': letter}) -}}">{{- letter -}}</a>
 			{%- endfor -%}
 		</div>
 	</div>
@@ -67,7 +67,7 @@
 					{%- endif -%}
 				</td>
 				<td class="center">
-					<a href="{{- path('cc_message_message_compose_to', {'user_id': user.getId }) -}}"><i class="icon-envelope"></i></a>
+					<a href="{{- path('ccdn_message_message_mail_compose_to', {'user_id': user.getId }) -}}"><i class="icon-envelope"></i></a>
 				</td>
 				<td class="center">
 					{%- if user.getProfile.aimIsPublic -%}

@@ -48,7 +48,7 @@ class MemberController extends ContainerAware
 
         return $this->container->get('templating')->renderResponse('CCDNUserMemberBundle:List:list.html.' . $this->getEngine(), array(
             'user_profile_route' => $this->container->getParameter('ccdn_user_member.user.profile_route'),
-            'pager_route' => 'cc_members_paginated',
+            'pager_route' => 'ccdn_user_member_paginated',
             'pager' => $members_paginated,
             'members' => $members,
         ));
@@ -78,7 +78,7 @@ class MemberController extends ContainerAware
 
         return $this->container->get('templating')->renderResponse('CCDNUserMemberBundle:List:list.html.' . $this->getEngine(), array(
             'user_profile_route' => $this->container->getParameter('ccdn_user_member.user.profile_route'),
-            'pager_route' => 'cc_members_alpha_paginated',
+            'pager_route' => 'ccdn_user_member_alpha_paginated',
             'pager' => $members_paginated,
             'members' => $members,
             'alpha' => $alpha,

@@ -2,7 +2,7 @@
 	{%- set route = app.request.attributes.get('_route') -%}
 
 	<li class="nav-header">{{- 'sidebar.header.navigation' | trans({}, 'CCDNUserMemberBundle') -}}</li>
-	<li class="active"><a href="{{- path('cc_members_index') -}}"><i class="icon-white icon-th-list"></i>&nbsp;{{- 'sidebar.link.members' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
+	<li class="active"><a href="{{- path('ccdn_user_member_index') -}}"><i class="icon-white icon-th-list"></i>&nbsp;{{- 'sidebar.link.members' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
 	<li class="divider"></li>
 
 	{%- if is_granted("ROLE_USER") -%}

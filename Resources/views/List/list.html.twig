@@ -24,18 +24,23 @@
 	<div class="btn-toolbar center" style="vertical-align:top;margin-top:0px;">
 		{%- set route = app.request.attributes.get('_route') -%}
 
-		<a class="btn{{- route == 'cc_members_index' ? ' active':'' -}}" style="display:inline-block;vertical-align:top;margin-top:0px;" href="{{- path('cc_members_index') -}}">{{- 'member.filter.all' |trans({}, 'CCDNUserMemberBundle') -}}</a>&nbsp;
 		<div class="btn-group">
-		{%- for letter in "A".."Z" -%}
-			<a class="btn{%- if alpha is defined -%}{{- (letter == alpha) ? ' active' : '' -}}{%- endif -%}" href="{{- path('cc_members_alpha_index', {'alpha': letter}) -}}">{{- letter -}}</a>
-		{%- endfor -%}
+			<a class="btn{{- route == 'cc_members_index' ? ' active':'' -}}" style="display:inline-block;vertical-align:top;margin-top:0px;" href="{{- path('cc_members_index') -}}">{{- 'member.filter.all' |trans({}, 'CCDNUserMemberBundle') -}}</a>
+			{%- for letter in "A".."Z" -%}
+				<a class="btn{%- if alpha is defined -%}{{- (letter == alpha) ? ' active' : '' -}}{%- endif -%}" href="{{- path('cc_members_alpha_index', {'alpha': letter}) -}}">{{- letter -}}</a>
+			{%- endfor -%}
 		</div>
 	</div>
 
-	{%- if pager.haveToPaginate -%}
-		{{- pagerfanta(pager, 'twitter_bootstrap', {'routeName': pager_route } ) -}}
-	{%- endif -%}
-
+	<div class="btn-toolbar" style="display:block !important;clear:both !important;">
+		{%- if pager.haveToPaginate -%}
+			<div class="pull-right">
+	    	{{- pagerfanta(pager, 'twitter_bootstrap_compact', {'routeName': pager_route }) -}}
+			</div>
+		{%- endif -%}
+		<br><br>
+	</div>
+	
 	<table class="table">
 		<thead>
 			<tr>
@@ -99,9 +104,14 @@
 		</tbody>
 	</table>
 
-	{%- if pager.haveToPaginate -%}
-		{{- pagerfanta(pager, 'twitter_bootstrap', {'routeName': pager_route } ) -}}
-	{%- endif -%}
+	<div class="btn-toolbar" style="display:block !important;clear:both !important;">
+		{%- if pager.haveToPaginate -%}
+			<div class="pull-right">
+	    	{{- pagerfanta(pager, 'twitter_bootstrap_compact', {'routeName': pager_route }) -}}
+			</div>
+		{%- endif -%}
+		<br><br>
+	</div>
 
 	{%- endspaceless -%}
 

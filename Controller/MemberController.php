@@ -27,8 +27,8 @@ class MemberController extends ContainerAware
     /**
      *
      * @access public
-     * @param  int $page
-     * @return RedirectResponse|RenderResponse
+     * @param  Int $page
+     * @return RenderResponse
      */
     public function showAction($page)
     {
@@ -38,18 +38,18 @@ class MemberController extends ContainerAware
             }
         }
 
-        $members_paginated = $this->container->get('ccdn_user_user.user.repository')->findAllPaginated();
+        $membersPager = $this->container->get('ccdn_user_user.user.repository')->findAllPaginated();
 
-        $members_per_page = $this->container->getParameter('ccdn_user_member.member.list.members_per_page');
-        $members_paginated->setMaxPerPage($members_per_page);
-        $members_paginated->setCurrentPage($page, false, true);
+        $membersPerPage = $this->container->getParameter('ccdn_user_member.member.list.members_per_page');
+        $membersPager->setMaxPerPage($membersPerPage);
+        $membersPager->setCurrentPage($page, false, true);
 
-        $members = $members_paginated->getCurrentPageResults();
+        $members = $membersPager->getCurrentPageResults();
 
         return $this->container->get('templating')->renderResponse('CCDNUserMemberBundle:List:list.html.' . $this->getEngine(), array(
             'user_profile_route' => $this->container->getParameter('ccdn_user_member.user.profile_route'),
             'pager_route' => 'ccdn_user_member_paginated',
-            'pager' => $members_paginated,
+            'pager' => $membersPager,
             'members' => $members,
         ));
     }
@@ -57,8 +57,8 @@ class MemberController extends ContainerAware
     /**
      *
      * @access public
-     * @param  int                             $page, char $alpha
-     * @return RedirectResponse|RenderResponse
+     * @param  Int $page, Char $alpha
+     * @return RenderResponse
      */
     public function showFilteredAction($page, $alpha)
     {
@@ -68,18 +68,18 @@ class MemberController extends ContainerAware
             }
         }
 
-        $members_paginated = $this->container->get('ccdn_user_user.user.repository')->findAllFilteredPaginated($alpha);
+        $membersPager = $this->container->get('ccdn_user_user.user.repository')->findAllFilteredPaginated($alpha);
 
-        $members_per_page = $this->container->getParameter('ccdn_user_member.member.list.members_per_page');
-        $members_paginated->setMaxPerPage($members_per_page);
-        $members_paginated->setCurrentPage($page, false, true);
+        $membersPerPage = $this->container->getParameter('ccdn_user_member.member.list.members_per_page');
+        $membersPager->setMaxPerPage($membersPerPage);
+        $membersPager->setCurrentPage($page, false, true);
 
-        $members = $members_paginated->getCurrentPageResults();
+        $members = $membersPager->getCurrentPageResults();
 
         return $this->container->get('templating')->renderResponse('CCDNUserMemberBundle:List:list.html.' . $this->getEngine(), array(
             'user_profile_route' => $this->container->getParameter('ccdn_user_member.user.profile_route'),
             'pager_route' => 'ccdn_user_member_alpha_paginated',
-            'pager' => $members_paginated,
+            'pager' => $membersPager,
             'members' => $members,
             'alpha' => $alpha,
         ));
@@ -88,7 +88,7 @@ class MemberController extends ContainerAware
     /**
      *
      * @access protected
-     * @return string
+     * @return String
      */
     protected function getEngine()
     {

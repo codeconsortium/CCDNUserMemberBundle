@@ -59,7 +59,7 @@
 			{%- if not user.locked or not user.enabled -%}
 			<tr class="{{- cycle(['row_odd', 'row_even'], row) }} marked_read">
 				<td class="left">
-					<a href="{{- path(user_profile_route, {'user_id': user.getId }) -}}">{{- user.username |title -}}</a>
+					<a href="{{- path(user_profile_route, {'userId': user.getId }) -}}">{{- user.username |title -}}</a>
 				</td>
 				<td class="center">
 					{%- if user.getProfile.website -%}
@@ -67,7 +67,7 @@
 					{%- endif -%}
 				</td>
 				<td class="center">
-					<a href="{{- path('ccdn_message_message_mail_compose_to', {'user_id': user.getId }) -}}"><i class="icon-envelope"></i></a>
+					<a href="{{- path('ccdn_message_message_mail_compose_to', {'userId': user.getId }) -}}"><i class="icon-envelope"></i></a>
 				</td>
 				<td class="center">
 					{%- if user.getProfile.aimIsPublic -%}

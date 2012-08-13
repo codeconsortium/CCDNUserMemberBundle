@@ -1,26 +1,55 @@
-layout.header_links.members: 'Members'
+#
+# Layout Header Link Labels.
+#
+ccdn_user_member.layout.header_links.members: 'Members'
 
-crumbs.members: 'Members'
+#
+# Page Titles.
+#
+ccdn_user_member.title.members: 'Members.'
 
-title.member: 'Members.'
+#
+# Crumbs.
+#
+ccdn_user_member.crumbs.members: 'Members'
 
-sidebar.header.navigation: 'Navigation'
-sidebar.link.members: 'Members'
-sidebar.link.account.view: 'Account'
-sidebar.link.profile.view: 'Profile'
-sidebar.link.login: 'Login'
-sidebar.link.register: 'Register'
-sidebar.link.reset: 'Forgot Password'
+#
+# Flash Messages.
+#
 
-member.filter.all: 'All'
+#
+# Sidebar.
+#
+ccdn_user_member.sidebar.header.navigation: 'Navigation'
+ccdn_user_member.sidebar.link.members: 'Members'
+ccdn_user_member.sidebar.link.account.view: 'Account'
+ccdn_user_member.sidebar.link.profile.view: 'Profile'
+ccdn_user_member.sidebar.link.login: 'Login'
+ccdn_user_member.sidebar.link.register: 'Register'
+ccdn_user_member.sidebar.link.reset: 'Forgot Password'
 
-member.table.head.username: username
-member.table.head.website: website
-member.table.head.pm: PM
-member.table.head.aim: AIM
-member.table.head.msn: MSN
-member.table.head.icq: ICQ
-member.table.head.yahoo: Yahoo
-member.table.head.joined_date: Member Since
+#
+# Link Labels.
+#
 
-members.table.empty: 'No members were found.'
+#
+# Forms.
+#
+
+#
+# Table Labels.
+#
+ccdn_user_member.member_table.filter.all: 'All'
+ccdn_user_member.member_table.head.username: 'Username'
+ccdn_user_member.member_table.head.website: 'Website'
+ccdn_user_member.member_table.head.pm: 'PM'
+ccdn_user_member.member_table.head.aim: 'AIM'
+ccdn_user_member.member_table.head.msn: 'MSN'
+ccdn_user_member.member_table.head.icq: 'ICQ'
+ccdn_user_member.member_table.head.yahoo: 'Yahoo'
+ccdn_user_member.member_table.head.joined_date: 'Member Since'
+ccdn_user_member.member_table.empty: 'No members were found.'
+
+#
+# Generic.
+#

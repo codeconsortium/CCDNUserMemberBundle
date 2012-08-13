@@ -4,7 +4,7 @@
 	{{ parent() }}
 {% endblock %}
 
-{% block title %}{{- truncDot('title.member' | trans({}, 'CCDNUserMemberBundle'), param('ccdn_user_member.seo.title_length')) -}}{% endblock -%}
+{% block title %}{{- truncDot('ccdn_user_member.title.members' | trans({}, 'CCDNUserMemberBundle'), param('ccdn_user_member.seo.title_length')) -}}{% endblock -%}
 
 {% block sidebar %}
 	{{ parent() }}
@@ -19,14 +19,14 @@
 
 	{%- include 'CCDNComponentCommonBundle:Flashes:flashes.html.twig' -%}
 
-	<h2>{{- 'title.member' | trans({}, 'CCDNUserMemberBundle') -}}</h2>
+	<h2>{{- 'ccdn_user_member.title.members' | trans({}, 'CCDNUserMemberBundle') -}}</h2>
 
 	<br>
 	<div class="btn-toolbar center" style="vertical-align:top;margin-top:0px;">
 		{%- set route = app.request.attributes.get('_route') -%}
 
 		<div class="btn-group">
-			<a class="btn{{- route == 'ccdn_user_member_index' ? ' active':'' -}}" style="display:inline-block;vertical-align:top;margin-top:0px;" href="{{- path('ccdn_user_member_index') -}}">{{- 'member.filter.all' |trans({}, 'CCDNUserMemberBundle') -}}</a>
+			<a class="btn{{- route == 'ccdn_user_member_index' ? ' active':'' -}}" style="display:inline-block;vertical-align:top;margin-top:0px;" href="{{- path('ccdn_user_member_index') -}}">{{- 'ccdn_user_member.member_table.filter.all' |trans({}, 'CCDNUserMemberBundle') -}}</a>
 			{%- for letter in "A".."Z" -%}
 				<a class="btn{%- if alpha is defined -%}{{- (letter == alpha) ? ' active' : '' -}}{%- endif -%}" href="{{- path('ccdn_user_member_alpha_index', {'alpha': letter}) -}}">{{- letter -}}</a>
 			{%- endfor -%}
@@ -45,14 +45,14 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th class="left">{{- 'member.table.head.username' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'member.table.head.website' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'member.table.head.pm' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'member.table.head.aim' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'member.table.head.msn' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'member.table.head.icq' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'member.table.head.yahoo' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'member.table.head.joined_date' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="left">{{- 'ccdn_user_member.member_table.head.username' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="center">{{- 'ccdn_user_member.member_table.head.website' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="center">{{- 'ccdn_user_member.member_table.head.pm' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="center">{{- 'ccdn_user_member.member_table.head.aim' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="center">{{- 'ccdn_user_member.member_table.head.msn' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="center">{{- 'ccdn_user_member.member_table.head.icq' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="center">{{- 'ccdn_user_member.member_table.head.yahoo' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				<th class="center">{{- 'ccdn_user_member.member_table.head.joined_date' | trans({}, 'CCDNUserMemberBundle') -}}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -98,7 +98,7 @@
 		{%- else -%}
 			<tr>
 				<td class="center" colspan="8">
-					{{- 'members.table.empty' | trans({}, 'CCDNUserMemberBundle') -}}
+					{{- 'ccdn_user_member.member_table.empty' | trans({}, 'CCDNUserMemberBundle') -}}
 				</td>
 			</tr>
 		{%- endfor -%}

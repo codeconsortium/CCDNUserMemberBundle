@@ -38,7 +38,7 @@ class MemberController extends ContainerAware
             }
         }
 
-        $membersPager = $this->container->get('ccdn_user_user.user.repository')->findAllPaginated();
+        $membersPager = $this->container->get('ccdn_user_user.repository.user')->findAllPaginated();
 
         $membersPerPage = $this->container->getParameter('ccdn_user_member.member.list.members_per_page');
         $membersPager->setMaxPerPage($membersPerPage);
@@ -68,7 +68,7 @@ class MemberController extends ContainerAware
             }
         }
 
-        $membersPager = $this->container->get('ccdn_user_user.user.repository')->findAllFilteredPaginated($alpha);
+        $membersPager = $this->container->get('ccdn_user_user.repository.user')->findAllFilteredPaginated($alpha);
 
         $membersPerPage = $this->container->getParameter('ccdn_user_member.member.list.members_per_page');
         $membersPager->setMaxPerPage($membersPerPage);

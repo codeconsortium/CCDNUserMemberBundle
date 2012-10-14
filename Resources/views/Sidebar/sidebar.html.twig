@@ -7,14 +7,14 @@
 
 	{%- if is_granted("ROLE_USER") -%}
 
-		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.account_route')) -}}"><i class="icon-cog"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.account.view' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
-		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.profile_route')) -}}"><i class="icon-user"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.profile.view' | trans({}, 'CCDNUserMemberBundle') -}}</a></li>
+		<li><a rel="nofollow" href="{{- path(ccdn_user_member.account_route) -}}"><i class="icon-cog"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.account.view' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
+		<li><a rel="nofollow" href="{{- path(ccdn_user_member.profile_route) -}}"><i class="icon-user"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.profile.view' | trans({}, 'CCDNUserMemberBundle') -}}</a></li>
 
 	{%- else -%}
 
-		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.login_route')) -}}"><i class="icon-user"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.login' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
-		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.registration_route')) -}}"><i class="icon-asterisk"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.register' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
-		<li><a rel="nofollow" href="{{- path(param('ccdn_user_member.sidebar.reset_route')) -}}"><i class="icon-lock"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.reset' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
+		<li><a rel="nofollow" href="{{- path(ccdn_user_member.login_route) -}}"><i class="icon-user"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.login' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
+		<li><a rel="nofollow" href="{{- path(ccdn_user_member.registration_route) -}}"><i class="icon-asterisk"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.register' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
+		<li><a rel="nofollow" href="{{- path(ccdn_user_member.reset_route) -}}"><i class="icon-lock"></i>&nbsp;{{- 'ccdn_user_member.sidebar.link.reset' |trans({}, 'CCDNUserMemberBundle') -}}</a></li>
 
 	{%- endif -%}
 

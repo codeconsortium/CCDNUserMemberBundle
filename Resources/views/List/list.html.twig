@@ -1,10 +1,10 @@
-{% extends param('ccdn_user_member.member.list.layout_template') %}
+{% extends ccdn_user_member.member.list.layout_template %}
 
 {% block stylesheets %}
 	{{ parent() }}
 {% endblock %}
 
-{% block title %}{{- truncDot('ccdn_user_member.title.members' | trans({}, 'CCDNUserMemberBundle'), param('ccdn_user_member.seo.title_length')) -}}{% endblock -%}
+{% block title %}{{- truncDot('ccdn_user_member.title.members' | trans({}, 'CCDNUserMemberBundle'), ccdn_user_member.seo.title_length) -}}{% endblock -%}
 
 {% block sidebar %}
 	{{ parent() }}
@@ -72,26 +72,26 @@
 				</td>
 				<td class="center">
 					{%- if user.getProfile.aimIsPublic -%}
-					<a href="{{- (is_granted('ROLE_USER')) ? 'mailto:' ~ user.getProfile.aim : path(param('ccdn_user_member.login_route')) -}}"><i class="icon-envelope"></i></a>
+					<a href="{{- (is_granted('ROLE_USER')) ? 'mailto:' ~ user.getProfile.aim : path(ccdn_user_member.login_route) -}}"><i class="icon-envelope"></i></a>
 					{%- endif -%}
 				</td>
 				<td class="center">
 					{%- if user.getProfile.msnIsPublic -%}
-					<a href="{{- (is_granted('ROLE_USER')) ? 'mailto:' ~ user.getProfile.msn : path(param('ccdn_user_member.login_route')) -}}"><i class="icon-envelope"></i></a>
+					<a href="{{- (is_granted('ROLE_USER')) ? 'mailto:' ~ user.getProfile.msn : path(ccdn_user_member.login_route) -}}"><i class="icon-envelope"></i></a>
 					{%- endif -%}
 				</td>
 				<td class="center">
 					{%- if user.getProfile.icqIsPublic -%}
-					<a href="{{- (is_granted('ROLE_USER')) ? 'mailto:' ~ user.getProfile.icq : path(param('ccdn_user_member.login_route')) -}}"><i class="icon-envelope"></i></a>
+					<a href="{{- (is_granted('ROLE_USER')) ? 'mailto:' ~ user.getProfile.icq : path(ccdn_user_member.login_route) -}}"><i class="icon-envelope"></i></a>
 					{%- endif -%}
 				</td>
 				<td class="center">
 					{%- if user.getProfile.yahooIsPublic -%}
-					<a href="{{- (is_granted('ROLE_USER')) ? 'mailto:' ~ user.getProfile.yahoo : path(param('ccdn_user_member.login_route')) -}}"><i class="icon-envelope"></i></a>
+					<a href="{{- (is_granted('ROLE_USER')) ? 'mailto:' ~ user.getProfile.yahoo : path(ccdn_user_member.login_route) -}}"><i class="icon-envelope"></i></a>
 					{%- endif -%}
 				</td>
 				<td class="center">
-					{{- user.getRegisteredDate |date(param('ccdn_user_member.member.list.member_since_datetime_format')) -}}
+					{{- user.getRegisteredDate |date(ccdn_user_member.member.list.member_since_datetime_format) -}}
 				</td>
 			</tr>
 			{%- endif -%}

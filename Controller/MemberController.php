@@ -27,7 +27,7 @@ class MemberController extends ContainerAware
     /**
      *
      * @access public
-     * @param  Int $page
+     * @param int $page
      * @return RenderResponse
      */
     public function showAction($page)
@@ -57,7 +57,7 @@ class MemberController extends ContainerAware
     /**
      *
      * @access public
-     * @param  Int $page, Char $alpha
+     * @param int $page, char $alpha
      * @return RenderResponse
      */
     public function showFilteredAction($page, $alpha)
@@ -88,7 +88,7 @@ class MemberController extends ContainerAware
     /**
      *
      * @access protected
-     * @return String
+     * @return string
      */
     protected function getEngine()
     {

@@ -40,13 +40,19 @@ class Configuration implements ConfigurationInterface
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
         $rootNode
+            ->addDefaultsIfNotSet()
+            ->canBeUnset()
             ->children()
                 ->arrayNode('user')
+                    ->addDefaultsIfNotSet()
+                    ->canBeUnset()
                     ->children()
                         ->scalarNode('profile_route')->defaultValue('ccdn_user_profile_show_by_id')->end()
                     ->end()
                 ->end()
                 ->arrayNode('template')
+                    ->addDefaultsIfNotSet()
+                    ->canBeUnset()
                     ->children()
                         ->scalarNode('engine')->defaultValue('twig')->end()
                     ->end()
@@ -69,6 +75,8 @@ class Configuration implements ConfigurationInterface
     protected function addSEOSection(ArrayNodeDefinition $node)
     {
         $node
+            ->addDefaultsIfNotSet()
+            ->canBeUnset()
             ->children()
                 ->arrayNode('seo')
                     ->addDefaultsIfNotSet()
@@ -88,6 +96,8 @@ class Configuration implements ConfigurationInterface
     private function addMemberSection(ArrayNodeDefinition $node)
     {
         $node
+            ->addDefaultsIfNotSet()
+            ->canBeUnset()
             ->children()
                 ->arrayNode('member')
                     ->addDefaultsIfNotSet()
@@ -95,6 +105,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->arrayNode('list')
                             ->addDefaultsIfNotSet()
+                            ->canBeUnset()
                             ->children()
                                 ->scalarNode('layout_template')->defaultValue('CCDNComponentCommonBundle:Layout:layout_body_right.html.twig')->end()
                                 ->scalarNode('members_per_page')->defaultValue(50)->end()
@@ -115,6 +126,8 @@ class Configuration implements ConfigurationInterface
     private function addSidebarSection(ArrayNodeDefinition $node)
     {
         $node
+            ->addDefaultsIfNotSet()
+            ->canBeUnset()
             ->children()
                 ->arrayNode('sidebar')
                     ->addDefaultsIfNotSet()

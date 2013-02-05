@@ -11,10 +11,11 @@ Installing CCDNUser MemberBundle 1.x
 
 ## Installation:
 
-Installation takes only 2 steps:
+Installation takes only 3 steps:
 
 1. Download and install dependencies via Composer.
 2. Register bundles with AppKernel.php.
+3. Update your app/config/routing.yml.
 
 ### Step 1: Download and install dependencies via Composer.
 
@@ -55,6 +56,16 @@ public function registerBundles()
 		...
 	);
 }
+```
+
+### Step 3: Update your app/config/routing.yml.
+
+In your app/config/routing.yml add:
+
+``` yml
+CCDNUserMemberBundle:
+    resource: "@CCDNUserMemberBundle/Resources/config/routing.yml"
+    prefix: /
 ```
 
 ## Next Steps.

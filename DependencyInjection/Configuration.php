@@ -125,6 +125,7 @@ class Configuration implements ConfigurationInterface
      */
     private function addSidebarSection(ArrayNodeDefinition $node)
     {
+        /** @todo Add some tokens (for say user id) that can be used in routes etc, and make this a user defined list, instead of being hard coded like below. */
         $node
             ->addDefaultsIfNotSet()
             ->canBeUnset()

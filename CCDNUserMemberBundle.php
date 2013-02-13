@@ -34,18 +34,21 @@ class CCDNUserMemberBundle extends Bundle
 			'seo' => array(
 				'title_length' => $this->container->getParameter('ccdn_user_member.seo.title_length'),
 			),
-			'login_route' => $this->container->getParameter('ccdn_user_member.login_route'),
-			'account_route' => $this->container->getParameter('ccdn_user_member.sidebar.account_route'),
-			'profile_route' => $this->container->getParameter('ccdn_user_member.sidebar.profile_route'),
-			'login_route' => $this->container->getParameter('ccdn_user_member.sidebar.login_route'),
-			'registration_route' => $this->container->getParameter('ccdn_user_member.sidebar.registration_route'),
-			'reset_route' => $this->container->getParameter('ccdn_user_member.sidebar.reset_route'),
+			//'login_route' => $this->container->getParameter('ccdn_user_member.login_route'),
+			//'account_route' => $this->container->getParameter('ccdn_user_member.sidebar.account_route'),
+			//'profile_route' => $this->container->getParameter('ccdn_user_member.sidebar.profile_route'),
+			//'login_route' => $this->container->getParameter('ccdn_user_member.sidebar.login_route'),
+			//'registration_route' => $this->container->getParameter('ccdn_user_member.sidebar.registration_route'),
+			//'reset_route' => $this->container->getParameter('ccdn_user_member.sidebar.reset_route'),
 			'member' => array(
 				'list' => array(
 					'layout_template' => $this->container->getParameter('ccdn_user_member.member.list.layout_template'),
 					'member_since_datetime_format' => $this->container->getParameter('ccdn_user_member.member.list.member_since_datetime_format'),
 				),
 			),
+            'sidebar' => array(
+                'links' => $this->container->getParameter('ccdn_user_member.sidebar.links'),
+            ),
 		));
 	}
 	

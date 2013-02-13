@@ -88,13 +88,6 @@ class CCDNUserMemberExtension extends Extension
      */
     private function getSidebarSection($container, $config)
     {
-        $container->setParameter('ccdn_user_member.sidebar.account_route', $config['sidebar']['account_route']);
-        $container->setParameter('ccdn_user_member.sidebar.profile_route', $config['sidebar']['profile_route']);
-        $container->setParameter('ccdn_user_member.sidebar.registration_route', $config['sidebar']['registration_route']);
-        $container->setParameter('ccdn_user_member.sidebar.login_route', $config['sidebar']['login_route']);
-        $container->setParameter('ccdn_user_member.sidebar.logout_route', $config['sidebar']['logout_route']);
-        $container->setParameter('ccdn_user_member.sidebar.reset_route', $config['sidebar']['reset_route']);
-
+        $container->setParameter('ccdn_user_member.sidebar.links', $config['sidebar']['links']);
     }
-
 }

@@ -125,7 +125,6 @@ class Configuration implements ConfigurationInterface
      */
     private function addSidebarSection(ArrayNodeDefinition $node)
     {
-        /** @todo Add some tokens (for say user id) that can be used in routes etc, and make this a user defined list, instead of being hard coded like below. */
         $node
             ->addDefaultsIfNotSet()
             ->canBeUnset()
@@ -134,15 +133,18 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
                     ->children()
-                        ->scalarNode('account_route')->defaultValue('ccdn_user_user_account_show')->end()
-                        ->scalarNode('profile_route')->defaultValue('ccdn_user_profile_show')->end()
-                        ->scalarNode('registration_route')->defaultValue('fos_user_registration_register')->end()
-                        ->scalarNode('login_route')->defaultValue('fos_user_security_login')->end()
-                        ->scalarNode('logout_route')->defaultValue('fos_user_security_logout')->end()
-                        ->scalarNode('reset_route')->defaultValue('fos_user_resetting_request')->end()
+                        ->arrayNode('links')
+                            ->prototype('array')
+                                ->children()
+                                    ->scalarNode('bundle')->end()
+                                    ->scalarNode('label')->end()
+                                    ->scalarNode('route')->defaultNull()->end()
+                                    ->scalarNode('path')->defaultNull()->end()
+                                ->end()
+                            ->end()
+                        ->end()
                     ->end()
                 ->end()
             ->end();
     }
-
 }

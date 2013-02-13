@@ -8,9 +8,9 @@
 
 {% block sidebar %}
 	{{ parent() }}
-
+	
 	{%- include 'CCDNUserMemberBundle:Sidebar:sidebar.html.twig' -%}
-
+	
 {% endblock %}
 
 {% block body_content %}
@@ -47,7 +47,7 @@
 			<tr>
 				<th class="left">{{- 'ccdn_user_member.member_table.head.username' | trans({}, 'CCDNUserMemberBundle') -}}</th>
 				<th class="center">{{- 'ccdn_user_member.member_table.head.website' | trans({}, 'CCDNUserMemberBundle') -}}</th>
-				<th class="center">{{- 'ccdn_user_member.member_table.head.pm' | trans({}, 'CCDNUserMemberBundle') -}}</th>
+				{#<th class="center">{{- 'ccdn_user_member.member_table.head.pm' | trans({}, 'CCDNUserMemberBundle') -}}</th>#}
 				<th class="center">{{- 'ccdn_user_member.member_table.head.aim' | trans({}, 'CCDNUserMemberBundle') -}}</th>
 				<th class="center">{{- 'ccdn_user_member.member_table.head.msn' | trans({}, 'CCDNUserMemberBundle') -}}</th>
 				<th class="center">{{- 'ccdn_user_member.member_table.head.icq' | trans({}, 'CCDNUserMemberBundle') -}}</th>
@@ -67,9 +67,11 @@
 					<a href="{{- user.getProfile.website -}}" target="_blank"><i class="icon-globe"></i></a>
 					{%- endif -%}
 				</td>
+				{#
 				<td class="center">
 					<a href="{{- path('ccdn_message_message_mail_compose_to', {'userId': user.getId }) -}}"><i class="icon-envelope"></i></a>
 				</td>
+				#}
 				<td class="center">
 					{%- if user.getProfile.aimIsPublic -%}
 					<a href="{{- (is_granted('ROLE_USER')) ? 'mailto:' ~ user.getProfile.aim : path(ccdn_user_member.login_route) -}}"><i class="icon-envelope"></i></a>

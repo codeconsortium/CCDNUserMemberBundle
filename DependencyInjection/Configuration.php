@@ -43,13 +43,6 @@ class Configuration implements ConfigurationInterface
             ->addDefaultsIfNotSet()
             ->canBeUnset()
             ->children()
-                ->arrayNode('user')
-                    ->addDefaultsIfNotSet()
-                    ->canBeUnset()
-                    ->children()
-                        ->scalarNode('profile_route')->defaultValue('ccdn_user_profile_show_by_id')->end()
-                    ->end()
-                ->end()
                 ->arrayNode('template')
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
@@ -57,12 +50,10 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('engine')->defaultValue('twig')->end()
                     ->end()
                 ->end()
-                ->scalarNode('login_route')->defaultValue('fos_user_security_login')->end()
             ->end();
 
         $this->addSEOSection($rootNode);
         $this->addMemberSection($rootNode);
-        $this->addSidebarSection($rootNode);
 
         return $treeBuilder;
     }
@@ -111,36 +102,6 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('members_per_page')->defaultValue(50)->end()
                                 ->scalarNode('member_since_datetime_format')->defaultValue('d-m-Y - H:i')->end()
                                 ->scalarNode('requires_login')->defaultValue(true)->end()
-                            ->end()
-                        ->end()
-                    ->end()
-                ->end()
-            ->end();
-    }
-
-    /**
-     *
-     * @access private
-     * @param ArrayNodeDefinition $node
-     */
-    private function addSidebarSection(ArrayNodeDefinition $node)
-    {
-        $node
-            ->addDefaultsIfNotSet()
-            ->canBeUnset()
-            ->children()
-                ->arrayNode('sidebar')
-                    ->addDefaultsIfNotSet()
-                    ->canBeUnset()
-                    ->children()
-                        ->arrayNode('links')
-                            ->prototype('array')
-                                ->children()
-                                    ->scalarNode('bundle')->end()
-                                    ->scalarNode('label')->end()
-                                    ->scalarNode('route')->defaultNull()->end()
-                                    ->scalarNode('path')->defaultNull()->end()
-                                ->end()
                             ->end()
                         ->end()
                     ->end()

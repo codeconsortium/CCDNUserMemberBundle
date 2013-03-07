@@ -48,13 +48,10 @@ class CCDNUserMemberExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $container->setParameter('ccdn_user_member.user.profile_route', $config['user']['profile_route']);
         $container->setParameter('ccdn_user_member.template.engine', $config['template']['engine']);
-        $container->setParameter('ccdn_user_member.login_route', $config['login_route']);
 
         $this->getSEOSection($container, $config);
         $this->getMemberSection($container, $config);
-        $this->getSidebarSection($container, $config);
     }
 
     /**
@@ -79,15 +76,5 @@ class CCDNUserMemberExtension extends Extension
         $container->setParameter('ccdn_user_member.member.list.member_since_datetime_format', $config['member']['list']['member_since_datetime_format']);
         $container->setParameter('ccdn_user_member.member.list.requires_login', $config['member']['list']['requires_login']);
 
-    }
-
-    /**
-     *
-     * @access private
-     * @param $container, $config
-     */
-    private function getSidebarSection($container, $config)
-    {
-        $container->setParameter('ccdn_user_member.sidebar.links', $config['sidebar']['links']);
     }
 }

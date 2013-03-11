@@ -46,7 +46,12 @@ class MemberController extends ContainerAware
 
         $members = $membersPager->getCurrentPageResults();
 
+        $crumbs = $this->container->get('ccdn_component_crumb.trail')
+            ->add($this->container->get('translator')->trans('ccdn_user_member.crumbs.members', array(), 'CCDNUserMemberBundle'),
+				$this->container->get('router')->generate('ccdn_user_member_index', array()), "users");
+		
         return $this->container->get('templating')->renderResponse('CCDNUserMemberBundle:List:list.html.' . $this->getEngine(), array(
+			'crumbs' => $crumbs,
             'pager_route' => 'ccdn_user_member_paginated',
             'pager' => $membersPager,
             'members' => $members,
@@ -75,7 +80,12 @@ class MemberController extends ContainerAware
 
         $members = $membersPager->getCurrentPageResults();
 
+        $crumbs = $this->container->get('ccdn_component_crumb.trail')
+            ->add($this->container->get('translator')->trans('ccdn_user_member.crumbs.members', array(), 'CCDNUserMemberBundle'),
+				$this->container->get('router')->generate('ccdn_user_member_index', array()), "users");
+		
         return $this->container->get('templating')->renderResponse('CCDNUserMemberBundle:List:list.html.' . $this->getEngine(), array(
+			'crumbs' => $crumbs,
             'pager_route' => 'ccdn_user_member_alpha_paginated',
             'pager' => $membersPager,
             'members' => $members,

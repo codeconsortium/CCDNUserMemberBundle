@@ -1,7 +1,7 @@
 parameters:
     
-    ccdn_user_member.gateway.user.class:                      CCDNUser\MemberBundle\Gateway\UserGateway
-    ccdn_user_member.manager.user.class:                      CCDNUser\MemberBundle\Manager\UserManager
+#    ccdn_user_member.gateway.user.class:                      CCDNUser\MemberBundle\Gateway\UserGateway
+#    ccdn_user_member.manager.user.class:                      CCDNUser\MemberBundle\Manager\UserManager
 
     ccdn_user_member.component.dashboard.integrator.class:    CCDNUser\MemberBundle\Component\Dashboard\DashboardIntegrator
     
@@ -14,6 +14,7 @@ services:
         class: %ccdn_user_member.gateway.user.class%
         arguments:
             - @doctrine
+            - %ccdn_user_member.entity.user.class%
 
     #
     # Managers.

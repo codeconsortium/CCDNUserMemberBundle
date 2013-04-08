@@ -28,7 +28,6 @@ use Symfony\Component\Config\FileLocator;
  */
 class CCDNUserMemberExtension extends Extension
 {
-
     /**
      * {@inheritDoc}
      */
@@ -45,15 +44,55 @@ class CCDNUserMemberExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
-
+		// Class file namespaces.
+        $this->getEntitySection($container, $config);
+        $this->getGatewaySection($container, $config);
+        $this->getManagerSection($container, $config);
+		
+		// Configuration stuff.
         $container->setParameter('ccdn_user_member.template.engine', $config['template']['engine']);
-
         $this->getSEOSection($container, $config);
         $this->getMemberSection($container, $config);
+		
+		// Load Service definitions.
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
     }
 
+    /**
+     *
+     * @access private
+     * @param $container, $config
+     */
+    private function getEntitySection($container, $config)
+    {
+		if (! array_key_exists('class', $config['entity']['user'])) {
+			throw new \Exception('You must set the class of the User entity in "app/config/config.yml" or some imported configuration file.');
+		}
+
+        $container->setParameter('ccdn_user_member.entity.user.class', $config['entity']['user']['class']);				
+	}
+	
+    /**
+     *
+     * @access private
+     * @param $container, $config
+     */
+    private function getGatewaySection($container, $config)
+    {
+        $container->setParameter('ccdn_user_member.gateway.user.class', $config['gateway']['user']['class']);
+	}
+	
+    /**
+     *
+     * @access private
+     * @param $container, $config
+     */
+    private function getManagerSection($container, $config)
+    {
+        $container->setParameter('ccdn_user_member.manager.user.class', $config['manager']['user']['class']);		
+	}
+	
     /**
      *
      * @access protected
@@ -75,6 +114,5 @@ class CCDNUserMemberExtension extends Extension
         $container->setParameter('ccdn_user_member.member.list.members_per_page', $config['member']['list']['members_per_page']);
         $container->setParameter('ccdn_user_member.member.list.member_since_datetime_format', $config['member']['list']['member_since_datetime_format']);
         $container->setParameter('ccdn_user_member.member.list.requires_login', $config['member']['list']['requires_login']);
-
     }
 }

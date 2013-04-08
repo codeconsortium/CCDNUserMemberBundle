@@ -27,7 +27,6 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
  */
 class Configuration implements ConfigurationInterface
 {
-	
     /**
      * {@inheritDoc}
      */
@@ -53,6 +52,7 @@ class Configuration implements ConfigurationInterface
 		$this->addEntitySection($rootNode);
 		$this->addGatewaySection($rootNode);
 		$this->addManagerSection($rootNode);
+		$this->addComponentSection($rootNode);
 		
 		// Configuration stuff.
         $this->addSEOSection($rootNode);
@@ -64,7 +64,7 @@ class Configuration implements ConfigurationInterface
     /**
      *
      * @access private
-     * @param ArrayNodeDefinition $node
+     * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
      */
     private function addEntitySection(ArrayNodeDefinition $node)
 	{
@@ -88,7 +88,7 @@ class Configuration implements ConfigurationInterface
     /**
      *
      * @access private
-     * @param ArrayNodeDefinition $node
+     * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
      */
     private function addGatewaySection(ArrayNodeDefinition $node)
     {
@@ -114,7 +114,7 @@ class Configuration implements ConfigurationInterface
     /**
      *
      * @access private
-     * @param ArrayNodeDefinition $node
+     * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
      */
     private function addManagerSection(ArrayNodeDefinition $node)
     {
@@ -139,8 +139,40 @@ class Configuration implements ConfigurationInterface
 	
     /**
      *
+     * @access private
+     * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
+     */
+    private function addComponentSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('component')
+                    ->addDefaultsIfNotSet()
+                    ->canBeUnset()
+                    ->children()
+		                ->arrayNode('dashboard')
+		                    ->addDefaultsIfNotSet()
+		                    ->canBeUnset()
+		                    ->children()
+				                ->arrayNode('integrator')
+				                    ->addDefaultsIfNotSet()
+				                    ->canBeUnset()
+				                    ->children()
+										->scalarNode('class')->defaultValue('CCDNUser\MemberBundle\Component\Dashboard\DashboardIntegrator')->end()							
+									->end()		
+								->end()
+							->end()
+						->end()
+					->end()
+				->end()
+			->end();
+	}
+	
+    /**
+     *
      * @access protected
-     * @param ArrayNodeDefinition $node
+     * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
      */
     protected function addSEOSection(ArrayNodeDefinition $node)
     {
@@ -161,7 +193,7 @@ class Configuration implements ConfigurationInterface
     /**
      *
      * @access private
-     * @param ArrayNodeDefinition $node
+     * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
      */
     private function addMemberSection(ArrayNodeDefinition $node)
     {

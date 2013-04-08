@@ -1,9 +1,6 @@
 parameters:
     
-#    ccdn_user_member.gateway.user.class:                      CCDNUser\MemberBundle\Gateway\UserGateway
-#    ccdn_user_member.manager.user.class:                      CCDNUser\MemberBundle\Manager\UserManager
-
-    ccdn_user_member.component.dashboard.integrator.class:    CCDNUser\MemberBundle\Component\Dashboard\DashboardIntegrator
+    # Service Parameters defined in app/config
     
 services:
 

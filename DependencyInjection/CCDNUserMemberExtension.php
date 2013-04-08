@@ -37,7 +37,10 @@ class CCDNUserMemberExtension extends Extension
     }
 
     /**
-     * {@inheritDoc}
+     *
+     * @access private
+	 * @param array $config
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -45,14 +48,15 @@ class CCDNUserMemberExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
 		// Class file namespaces.
-        $this->getEntitySection($container, $config);
-        $this->getGatewaySection($container, $config);
-        $this->getManagerSection($container, $config);
+        $this->getEntitySection($config, $container);
+        $this->getGatewaySection($config, $container);
+        $this->getManagerSection($config, $container);
+		$this->getComponentSection($config, $container);
 		
 		// Configuration stuff.
         $container->setParameter('ccdn_user_member.template.engine', $config['template']['engine']);
-        $this->getSEOSection($container, $config);
-        $this->getMemberSection($container, $config);
+        $this->getSEOSection($config, $container);
+        $this->getMemberSection($config, $container);
 		
 		// Load Service definitions.
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -62,9 +66,10 @@ class CCDNUserMemberExtension extends Extension
     /**
      *
      * @access private
-     * @param $container, $config
+	 * @param array $config
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    private function getEntitySection($container, $config)
+    private function getEntitySection(array $config, ContainerBuilder $container)
     {
 		if (! array_key_exists('class', $config['entity']['user'])) {
 			throw new \Exception('You must set the class of the User entity in "app/config/config.yml" or some imported configuration file.');
@@ -76,9 +81,10 @@ class CCDNUserMemberExtension extends Extension
     /**
      *
      * @access private
-     * @param $container, $config
+	 * @param array $config
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    private function getGatewaySection($container, $config)
+    private function getGatewaySection(array $config, ContainerBuilder $container)
     {
         $container->setParameter('ccdn_user_member.gateway.user.class', $config['gateway']['user']['class']);
 	}
@@ -86,19 +92,32 @@ class CCDNUserMemberExtension extends Extension
     /**
      *
      * @access private
-     * @param $container, $config
+	 * @param array $config
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    private function getManagerSection($container, $config)
+    private function getManagerSection(array $config, ContainerBuilder $container)
     {
         $container->setParameter('ccdn_user_member.manager.user.class', $config['manager']['user']['class']);		
 	}
 	
     /**
      *
-     * @access protected
-     * @param $container, $config
+     * @access private
+     * @param array $config
+	 * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    protected function getSEOSection($container, $config)
+    private function getComponentSection(array $config, ContainerBuilder $container)
+    {
+        $container->setParameter('ccdn_user_member.component.dashboard.integrator.class', $config['component']['dashboard']['integrator']['class']);		
+	}
+	
+    /**
+     *
+     * @access private
+	 * @param array $config
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     */
+    protected function getSEOSection(array $config, ContainerBuilder $container)
     {
         $container->setParameter('ccdn_user_member.seo.title_length', $config['seo']['title_length']);
     }
@@ -106,9 +125,10 @@ class CCDNUserMemberExtension extends Extension
     /**
      *
      * @access private
-     * @param $container, $config
+	 * @param array $config
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    private function getMemberSection($container, $config)
+    private function getMemberSection(array $config, ContainerBuilder $container)
     {
         $container->setParameter('ccdn_user_member.member.list.layout_template', $config['member']['list']['layout_template']);
         $container->setParameter('ccdn_user_member.member.list.members_per_page', $config['member']['list']['members_per_page']);

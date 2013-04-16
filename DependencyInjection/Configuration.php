@@ -28,7 +28,9 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritDoc}
+     *
+	 * @access public
+	 * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder
      */
     public function getConfigTreeBuilder()
     {
@@ -49,14 +51,18 @@ class Configuration implements ConfigurationInterface
             ->end();
 
 		// Class file namespaces.
-		$this->addEntitySection($rootNode);
-		$this->addGatewaySection($rootNode);
-		$this->addManagerSection($rootNode);
-		$this->addComponentSection($rootNode);
+		$this
+			->addEntitySection($rootNode)
+			->addGatewaySection($rootNode)
+			->addManagerSection($rootNode)
+			->addComponentSection($rootNode)
+		;
 		
 		// Configuration stuff.
-        $this->addSEOSection($rootNode);
-        $this->addMemberSection($rootNode);
+        $this
+			->addSEOSection($rootNode)
+	        ->addMemberSection($rootNode)
+		;
 
         return $treeBuilder;
     }
@@ -65,6 +71,7 @@ class Configuration implements ConfigurationInterface
      *
      * @access private
      * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\Configuration
      */
     private function addEntitySection(ArrayNodeDefinition $node)
 	{
@@ -82,13 +89,17 @@ class Configuration implements ConfigurationInterface
 						->end()
 					->end()
 				->end()
-			->end();
+			->end()
+		;
+		
+		return $this;
 	}
 	
     /**
      *
      * @access private
      * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\Configuration
      */
     private function addGatewaySection(ArrayNodeDefinition $node)
     {
@@ -108,13 +119,17 @@ class Configuration implements ConfigurationInterface
 						->end()
 					->end()
 				->end()
-			->end();
+			->end()
+		;
+		
+		return $this;
 	}
 	
     /**
      *
      * @access private
      * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\Configuration
      */
     private function addManagerSection(ArrayNodeDefinition $node)
     {
@@ -134,13 +149,17 @@ class Configuration implements ConfigurationInterface
 						->end()
 					->end()
 				->end()
-			->end();
+			->end()
+		;
+		
+		return $this;
 	}
 	
     /**
      *
      * @access private
      * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\Configuration
      */
     private function addComponentSection(ArrayNodeDefinition $node)
     {
@@ -166,13 +185,17 @@ class Configuration implements ConfigurationInterface
 						->end()
 					->end()
 				->end()
-			->end();
+			->end()
+		;
+		
+		return $this;
 	}
 	
     /**
      *
      * @access protected
      * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\Configuration
      */
     protected function addSEOSection(ArrayNodeDefinition $node)
     {
@@ -187,13 +210,17 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('title_length')->defaultValue('67')->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+		;
+		
+		return $this;
     }
 
     /**
      *
      * @access private
      * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $node
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\Configuration
      */
     private function addMemberSection(ArrayNodeDefinition $node)
     {
@@ -217,6 +244,9 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+		;
+		
+		return $this;
     }
 }

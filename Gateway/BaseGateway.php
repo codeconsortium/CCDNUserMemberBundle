@@ -64,7 +64,17 @@ abstract class BaseGateway implements BaseGatewayInterface
 		
 		$this->entityClass = $entityClass;
 	}
-
+	
+	/**
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function getEntityClass()
+	{
+		return $this->entityClass;
+	}
+	
 	/**
 	 *
 	 * @access public

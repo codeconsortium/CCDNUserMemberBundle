@@ -29,7 +29,9 @@ use Symfony\Component\Config\FileLocator;
 class CCDNUserMemberExtension extends Extension
 {
     /**
-     * {@inheritDoc}
+	 *
+     * @access public
+	 * @return string
      */
     public function getAlias()
     {
@@ -38,7 +40,7 @@ class CCDNUserMemberExtension extends Extension
 
     /**
      *
-     * @access private
+     * @access public
 	 * @param array $config
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
@@ -48,15 +50,20 @@ class CCDNUserMemberExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
 		// Class file namespaces.
-        $this->getEntitySection($config, $container);
-        $this->getGatewaySection($config, $container);
-        $this->getManagerSection($config, $container);
-		$this->getComponentSection($config, $container);
+        $this
+			->getEntitySection($config, $container)
+	        ->getGatewaySection($config, $container)
+	        ->getManagerSection($config, $container)
+			->getComponentSection($config, $container)
+		;
 		
 		// Configuration stuff.
         $container->setParameter('ccdn_user_member.template.engine', $config['template']['engine']);
-        $this->getSEOSection($config, $container);
-        $this->getMemberSection($config, $container);
+		
+        $this
+			->getSEOSection($config, $container)
+	        ->getMemberSection($config, $container)
+		;
 		
 		// Load Service definitions.
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -68,6 +75,7 @@ class CCDNUserMemberExtension extends Extension
      * @access private
 	 * @param array $config
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\CCDNUserMemberExtension
      */
     private function getEntitySection(array $config, ContainerBuilder $container)
     {
@@ -76,6 +84,8 @@ class CCDNUserMemberExtension extends Extension
 		}
 
         $container->setParameter('ccdn_user_member.entity.user.class', $config['entity']['user']['class']);				
+		
+		return $this;
 	}
 	
     /**
@@ -83,10 +93,13 @@ class CCDNUserMemberExtension extends Extension
      * @access private
 	 * @param array $config
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\CCDNUserMemberExtension
      */
     private function getGatewaySection(array $config, ContainerBuilder $container)
     {
         $container->setParameter('ccdn_user_member.gateway.user.class', $config['gateway']['user']['class']);
+		
+		return $this;
 	}
 	
     /**
@@ -94,21 +107,13 @@ class CCDNUserMemberExtension extends Extension
      * @access private
 	 * @param array $config
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\CCDNUserMemberExtension
      */
     private function getManagerSection(array $config, ContainerBuilder $container)
     {
         $container->setParameter('ccdn_user_member.manager.user.class', $config['manager']['user']['class']);		
-	}
-	
-    /**
-     *
-     * @access private
-     * @param array $config
-	 * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
-    private function getComponentSection(array $config, ContainerBuilder $container)
-    {
-        $container->setParameter('ccdn_user_member.component.dashboard.integrator.class', $config['component']['dashboard']['integrator']['class']);		
+		
+		return $this;
 	}
 	
     /**
@@ -116,10 +121,27 @@ class CCDNUserMemberExtension extends Extension
      * @access private
 	 * @param array $config
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\CCDNUserMemberExtension
      */
-    protected function getSEOSection(array $config, ContainerBuilder $container)
+    private function getComponentSection(array $config, ContainerBuilder $container)
+    {
+        $container->setParameter('ccdn_user_member.component.dashboard.integrator.class', $config['component']['dashboard']['integrator']['class']);		
+		
+		return $this;
+	}
+	
+    /**
+     *
+     * @access private
+	 * @param array $config
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\CCDNUserMemberExtension
+     */
+    private function getSEOSection(array $config, ContainerBuilder $container)
     {
         $container->setParameter('ccdn_user_member.seo.title_length', $config['seo']['title_length']);
+		
+		return $this;
     }
 
     /**
@@ -127,6 +149,7 @@ class CCDNUserMemberExtension extends Extension
      * @access private
 	 * @param array $config
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+	 * @return \CCDNUser\MemberBundle\DependencyInjection\CCDNUserMemberExtension
      */
     private function getMemberSection(array $config, ContainerBuilder $container)
     {
@@ -134,5 +157,7 @@ class CCDNUserMemberExtension extends Extension
         $container->setParameter('ccdn_user_member.member.list.members_per_page', $config['member']['list']['members_per_page']);
         $container->setParameter('ccdn_user_member.member.list.member_since_datetime_format', $config['member']['list']['member_since_datetime_format']);
         $container->setParameter('ccdn_user_member.member.list.requires_login', $config['member']['list']['requires_login']);
+		
+		return $this;
     }
 }

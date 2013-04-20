@@ -13,42 +13,51 @@
 
 namespace CCDNUser\MemberBundle\Component\Dashboard;
 
-use CCDNComponent\DashboardBundle\Component\Integrator\BaseIntegrator;
-use CCDNComponent\DashboardBundle\Component\Integrator\IntegratorInterface;
+use CCDNComponent\DashboardBundle\Component\Integrator\Model\BuilderInterface;
 
 /**
  *
  * @author Reece Fowell <reece@codeconsortium.com>
- * @version 1.0
+ * @version 2.0
  */
-class DashboardIntegrator extends BaseIntegrator implements IntegratorInterface
+class DashboardIntegrator
 {
-
+	/**
+	 *
+	 * @access protected
+	 * @var bool $requiresLogin
+	 */
+	protected $requiresLogin;
+	
+	/**
+	 *
+	 * @access public
+	 * @param bool $requiresLogin
+	 */
+	public function __construct($requiresLogin)
+	{
+		$this->requiresLogin = $requiresLogin;
+	}
+	
     /**
-     *
-     * Structure of $resources
-     * 	[DASHBOARD_PAGE <string>]
-     * 		[CATEGORY_NAME <string>]
-     *			[ROUTE_FOR_LINK <string>]
-     *				[AUTH <string>] (optional)
-     *				[URL_LINK <string>]
-     *				[URL_NAME <string>]
 	 * 
 	 * @access public
-	 * @return array $resources
+     * @param CCDNComponent\DashboardBundle\Component\Integrator\Model\BuilderInterface $builder
      */
-    public function getResources()
+    public function build(BuilderInterface $builder)
     {
-        $resources = array(
-            'user' => array(
-                'Community' => array(
-                    'ccdn_user_member_index' => array('auth' => 'ROLE_USER', 'name' => 'Members', 'icon' => $this->basePath . '/bundles/ccdncomponentcommon/images/icons/Black/32x32/32x32_users.png')
-                ),
-            ),
-
-        );
-
-        return $resources;
+		$builder
+			->addCategory('community')
+				->setLabel('ccdn_user_member.dashboard.categories.user', array(), 'CCDNUserMemberBundle')
+				->addLinks()
+					->addLink('members')
+						->setAuthRole(($this->requiresLogin ? 'ROLE_USER': null))
+						->setRoute('ccdn_user_member_index')
+						->setIcon('/bundles/ccdncomponentcommon/images/icons/Black/32x32/32x32_users.png')
+						->setLabel('ccdn_user_member.title.members', array(), 'CCDNUserMemberBundle')
+					->end()
+				->end()
+			->end()
+		;
     }
-
 }

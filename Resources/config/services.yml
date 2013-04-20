@@ -29,7 +29,8 @@ services:
     #
     ccdn_user_member.component.dashboard.integrator:
         class: %ccdn_user_member.component.dashboard.integrator.class%
-        arguments: [@service_container]
+        arguments:
+            - %ccdn_user_member.member.list.requires_login%
         tags:
             - { name: ccdn_component_dashboard.integrator }
     

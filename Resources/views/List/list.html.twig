@@ -9,7 +9,7 @@
 
 	{%- spaceless -%}
 
-	<section>		
+	<section>
 		<nav class="btn-toolbar center clearfix">
 			{%- set route = app.request.attributes.get('_route') -%}
 
@@ -17,7 +17,7 @@
 				<a class="btn btn-mini{{- route == 'ccdn_user_member_index' ? ' active':'' -}}" href="{{- path('ccdn_user_member_index') -}}">
 					{{- 'ccdn_user_member.member_table.filter.all' |trans({}, 'CCDNUserMemberBundle') -}}
 				</a>
-			
+
 				{%- for letter in "A".."Z" -%}
 					<a class="btn btn-mini{%- if alpha is defined -%}{{- (letter == alpha) ? ' active' : '' -}}{%- endif -%}" href="{{- path('ccdn_user_member_alpha_index', {'alpha': letter}) -}}">
 						{{- letter -}}
@@ -33,7 +33,7 @@
 				</nav>
 			</div>
 		{%- endif -%}
-	
+
 		<table class="table table-bordered table-striped table-hover table-no-vertical-borders">
 			<thead>
 				<tr>
@@ -49,9 +49,9 @@
 			<tbody>
 				{%- for row, user in members -%}
 					{%- if not user.locked or not user.enabled -%}
-					
+
 						{%- set member = create_profile(user) -%}
-					
+
 						<tr>
 							<td class="left">
 								{{- member.getProfilePath() |raw -}}
@@ -114,7 +114,7 @@
 			</div>
 		{%- endif -%}
 	</section>
-			
+
 	{%- endspaceless -%}
 
 {% endblock body_content %}

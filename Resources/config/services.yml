@@ -1,7 +1,7 @@
 parameters:
-    
+
     # Service Parameters defined in app/config
-    
+
 services:
 
     #
@@ -33,4 +33,3 @@ services:
             - %ccdn_user_member.member.list.requires_login%
         tags:
             - { name: ccdn_component_dashboard.integrator }
-    

@@ -17,47 +17,53 @@ use CCDNComponent\DashboardBundle\Component\Integrator\Model\BuilderInterface;
 
 /**
  *
- * @author Reece Fowell <reece@codeconsortium.com>
- * @version 2.0
+ * @category CCDNUser
+ * @package  MemberBundle
+ *
+ * @author   Reece Fowell <reece@codeconsortium.com>
+ * @license  http://opensource.org/licenses/MIT MIT
+ * @version  Release: 2.0
+ * @link     https://github.com/codeconsortium/CCDNUserMemberBundle
+ *
  */
 class DashboardIntegrator
 {
-	/**
-	 *
-	 * @access protected
-	 * @var bool $requiresLogin
-	 */
-	protected $requiresLogin;
-	
-	/**
-	 *
-	 * @access public
-	 * @param bool $requiresLogin
-	 */
-	public function __construct($requiresLogin)
-	{
-		$this->requiresLogin = $requiresLogin;
-	}
-	
     /**
-	 * 
-	 * @access public
+     *
+     * @access protected
+     * @var bool $requiresLogin
+     */
+    protected $requiresLogin;
+
+    /**
+     *
+     * @access public
+     * @param bool $requiresLogin
+     */
+    public function __construct($requiresLogin)
+    {
+        $this->requiresLogin = $requiresLogin;
+    }
+
+    /**
+     *
+     * @access public
      * @param CCDNComponent\DashboardBundle\Component\Integrator\Model\BuilderInterface $builder
      */
     public function build(BuilderInterface $builder)
     {
-		$builder
-			->addCategory('community')
-				->setLabel('ccdn_user_member.dashboard.categories.user', array(), 'CCDNUserMemberBundle')
-				->addLinks()
-					->addLink('members')
-						->setAuthRole(($this->requiresLogin ? 'ROLE_USER': null))
-						->setRoute('ccdn_user_member_index')
-						->setIcon('/bundles/ccdncomponentcommon/images/icons/Black/32x32/32x32_users.png')
-						->setLabel('ccdn_user_member.title.members', array(), 'CCDNUserMemberBundle')
-					->end()
-				->end()
-			->end()
-		;
+        $builder
+            ->addCategory('community')
+                ->setLabel('ccdn_user_member.dashboard.categories.user', array(), 'CCDNUserMemberBundle')
+                ->addLinks()
+                    ->addLink('members')
+                        ->setAuthRole(($this->requiresLogin ? 'ROLE_USER': null))
+                        ->setRoute('ccdn_user_member_index')
+                        ->setIcon('/bundles/ccdncomponentcommon/images/icons/Black/32x32/32x32_users.png')
+                        ->setLabel('ccdn_user_member.title.members', array(), 'CCDNUserMemberBundle')
+                    ->end()
+                ->end()
+            ->end()
+        ;
     }
 }

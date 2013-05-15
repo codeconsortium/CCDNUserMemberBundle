@@ -1,60 +1,35 @@
-ccdn_user_member:
-    dashboard:
-        categories:
-            user: User
+dashboard:
+    categories:
+        user:          "User"
 
-#
-# Layout Header Link Labels.
-#
-ccdn_user_member.layout.header_links.members: 'Members'
+title:
+    members:           "Members"
 
-#
-# Page Titles.
-#
-ccdn_user_member.title.members: 'Members.'
+crumbs:
+    members:           "Members"
 
-#
-# Crumbs.
-#
-ccdn_user_member.crumbs.members: 'Members'
+sidebar:
+    header:
+        navigation:    "Navigation"
 
-#
-# Flash Messages.
-#
+link:
+    members:           "Members"
+    account.view:      "Account"
+    profile.view:      "Profile"
+    login:             "Login"
+    register:          "Register"
+    reset:             "Forgot Password"
 
-#
-# Sidebar.
-#
-ccdn_user_member.sidebar.header.navigation: 'Navigation'
-ccdn_user_member.sidebar.link.members: 'Members'
-ccdn_user_member.sidebar.link.account.view: 'Account'
-ccdn_user_member.sidebar.link.profile.view: 'Profile'
-ccdn_user_member.sidebar.link.login: 'Login'
-ccdn_user_member.sidebar.link.register: 'Register'
-ccdn_user_member.sidebar.link.reset: 'Forgot Password'
+generic:
+    thead:
+        filter.all:    "All"
+        username:      "Username"
+        website:       "Website"
+        pm:            "PM"
+        aim:           "AIM"
+        msn:           "MSN"
+        icq:           "ICQ"
+        yahoo:         "Yahoo"
+        member_since:  "Member Since"
+        none:          "No members were found."
 
-#
-# Link Labels.
-#
-
-#
-# Forms.
-#
-
-#
-# Table Labels.
-#
-ccdn_user_member.member_table.filter.all: 'All'
-ccdn_user_member.member_table.head.username: 'Username'
-ccdn_user_member.member_table.head.website: 'Website'
-ccdn_user_member.member_table.head.pm: 'PM'
-ccdn_user_member.member_table.head.aim: 'AIM'
-ccdn_user_member.member_table.head.msn: 'MSN'
-ccdn_user_member.member_table.head.icq: 'ICQ'
-ccdn_user_member.member_table.head.yahoo: 'Yahoo'
-ccdn_user_member.member_table.head.joined_date: 'Member Since'
-ccdn_user_member.member_table.empty: 'No members were found.'
-
-#
-# Generic.
-#

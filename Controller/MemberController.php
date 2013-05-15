@@ -43,7 +43,7 @@ class MemberController extends BaseController
         $membersPager = $this->getUserManager()->getAllUsersPaginated($page);
 
         $crumbs = $this->getCrumbs()
-            ->add($this->trans('ccdn_user_member.crumbs.members'), $this->path('ccdn_user_member_index'));
+            ->add($this->trans('crumbs.members'), $this->path('ccdn_user_member_index'));
 
         return $this->renderResponse('CCDNUserMemberBundle:List:list.html.',
             array(
@@ -71,7 +71,7 @@ class MemberController extends BaseController
         $membersPager = $this->getUserManager()->getAllFilteredAtoZUsersPaginated($page, $alpha);
 
         $crumbs = $this->getCrumbs()
-            ->add($this->trans('ccdn_user_member.crumbs.members'), $this->path('ccdn_user_member_index'));
+            ->add($this->trans('crumbs.members'), $this->path('ccdn_user_member_index'));
 
         return $this->renderResponse('CCDNUserMemberBundle:List:list.html.',
             array(

@@ -17,25 +17,34 @@
 {% endblock javascripts %}
 
 
-
 {% block tool_bar %}
-	<div id="sub-nav" class="row-fluid">
-	    <div class="span2">
-			<h3>
-				{% block sub_title %}
-					<a href="{{ path('ccdn_user_member_index') }}">
-						{{- 'ccdn_user_member.title.members' | trans({}, 'CCDNUserMemberBundle') -}}
-					</a>
-				{% endblock sub_title %}
-			</h3>
-		</div>
+	{%- spaceless -%}
+		<header>
+			<div class="container-fluid clear-top crumb-bar-container">
+				<div class="row-fluid">
+				    <div class="span2">
+						{% block sub_title %}
+							{%- if is_granted('ROLE_USER') -%}
+								<h3>
+									<a href="{{ path('ccdn_user_member_index') }}">
+										{{- 'ccdn_user_member.title.members' | trans({}, 'CCDNUserMemberBundle') -}}
+									</a>
+								</h3>
+							{%- endif -%}
+						{% endblock sub_title %}
+					</div>
 
-		<nav class="span10">
-			{%- block crumb_trail -%}
-				{%- include 'CCDNComponentCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } -%}
-			{%- endblock crumb_trail -%}
-		</nav>
-	</div>
+					{%- if crumbs is defined -%}
+						<nav class="span10">
+							{%- block crumb_trail -%}
+								{%- include 'CCDNComponentCrumbTrailBundle:Trail:trail.html.twig' with {'crumbs': crumbs } -%}
+							{%- endblock crumb_trail -%}
+						</nav>
+					{%- endif -%}
+				</div>
+			</div>
+		</header>
+	{%- endspaceless -%}
 {% endblock tool_bar %}
 
 

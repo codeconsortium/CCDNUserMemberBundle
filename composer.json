@@ -18,6 +18,9 @@
         "symfony/symfony": "2.1.*",
         "doctrine/doctrine-bundle": "*"
     },
+	"suggest": {
+		"reecefowell/jquery-timestamper": "dev-master"
+	},
     "autoload": {
         "psr-0": { "CCDNUser\\MemberBundle": "" }
     },

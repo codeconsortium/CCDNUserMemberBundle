@@ -53,7 +53,7 @@ abstract class BaseGateway implements BaseGatewayInterface
     /**
      *
      * @access protected
-     * @var \Doctrine\Bundle\DoctrineBundle\Registry $doctrine
+     * @var $paginator
      */
     protected $paginator;
 
@@ -152,17 +152,7 @@ abstract class BaseGateway implements BaseGatewayInterface
     public function paginateQuery(QueryBuilder $qb, $itemsPerPage, $page)
     {
 		$pager = $this->paginator->paginate($qb, $page, $itemsPerPage);
-        //try {
-        //    $pager = new Pagerfanta(new DoctrineORMAdapter($qb));
-        //} catch (\Doctrine\ORM\NoResultException $e) {
-        //    return null;
-        //} catch (\Exception $e) {
-        //    return null;
-        //}
-        //
-        //$pager->setMaxPerPage($itemsPerPage);
-        //$pager->setCurrentPage($page, false, true);
-        //
+        
         return $pager;
     }
 

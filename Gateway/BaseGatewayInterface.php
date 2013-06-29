@@ -39,7 +39,7 @@ interface BaseGatewayInterface
      * @param \Doctrine\Bundle\DoctrineBundle\Registry $doctrine
      * @param string                                   $entityClass
      */
-    public function __construct(Registry $doctrine, $entityClass);
+    public function __construct(Registry $doctrine, $paginator, $entityClass);
 
     /**
      *

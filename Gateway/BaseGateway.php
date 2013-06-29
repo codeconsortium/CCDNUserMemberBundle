@@ -53,6 +53,13 @@ abstract class BaseGateway implements BaseGatewayInterface
     /**
      *
      * @access protected
+     * @var \Doctrine\Bundle\DoctrineBundle\Registry $doctrine
+     */
+    protected $paginator;
+
+    /**
+     *
+     * @access protected
      * @var \Doctrine\ORM\EntityManager $em
      */
     protected $em;
@@ -63,9 +70,11 @@ abstract class BaseGateway implements BaseGatewayInterface
      * @param \Doctrine\Bundle\DoctrineBundle\Registry $doctrine
      * @param string                                   $entityClass
      */
-    public function __construct(Registry $doctrine, $entityClass)
+    public function __construct(Registry $doctrine, $paginator, $entityClass)
     {
         $this->doctrine = $doctrine;
+
+		$this->paginator = $paginator;
 
         $this->em = $doctrine->getEntityManager();
 
@@ -142,17 +151,18 @@ abstract class BaseGateway implements BaseGatewayInterface
      */
     public function paginateQuery(QueryBuilder $qb, $itemsPerPage, $page)
     {
-        try {
-            $pager = new Pagerfanta(new DoctrineORMAdapter($qb));
-        } catch (\Doctrine\ORM\NoResultException $e) {
-            return null;
-        } catch (\Exception $e) {
-            return null;
-        }
-
-        $pager->setMaxPerPage($itemsPerPage);
-        $pager->setCurrentPage($page, false, true);
-
+		$pager = $this->paginator->paginate($qb, $page, $itemsPerPage);
+        //try {
+        //    $pager = new Pagerfanta(new DoctrineORMAdapter($qb));
+        //} catch (\Doctrine\ORM\NoResultException $e) {
+        //    return null;
+        //} catch (\Exception $e) {
+        //    return null;
+        //}
+        //
+        //$pager->setMaxPerPage($itemsPerPage);
+        //$pager->setCurrentPage($page, false, true);
+        //
         return $pager;
     }
 

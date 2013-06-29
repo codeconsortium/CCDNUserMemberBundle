@@ -31,16 +31,22 @@ class MemberController extends BaseController
     /**
      *
      * @access public
-     * @param  int            $page
      * @return RenderResponse
      */
-    public function showAction($page)
+    public function showAction()
     {
         if ($this->container->getParameter('ccdn_user_member.member.list.requires_login') == 'true') {
             $this->isAuthorised('ROLE_USER');
         }
 
-        $membersPager = $this->getUserManager()->getAllUsersPaginated($page);
+		$page = $this->getQuery('page', 1);
+		$alpha = $this->getQuery('alpha', null);
+		
+		if ($alpha) {
+			$membersPager = $this->getUserManager()->getAllFilteredAtoZUsersPaginated($page, $alpha);
+		} else {
+	        $membersPager = $this->getUserManager()->getAllUsersPaginated($page);
+		}
 
         $crumbs = $this->getCrumbs()
             ->add($this->trans('crumbs.members'), $this->path('ccdn_user_member_index'));
@@ -48,38 +54,8 @@ class MemberController extends BaseController
         return $this->renderResponse('CCDNUserMemberBundle:List:list.html.',
             array(
                 'crumbs' => $crumbs,
-                'pager_route' => 'ccdn_user_member_paginated',
                 'pager' => $membersPager,
-                'members' => $membersPager->getCurrentPageResults(),
-            )
-        );
-    }
-
-    /**
-     *
-     * @access public
-     * @param  int            $page
-     * @param  char           $alpha
-     * @return RenderResponse
-     */
-    public function showFilteredAction($page, $alpha)
-    {
-        if ($this->container->getParameter('ccdn_user_member.member.list.requires_login') == 'true') {
-            $this->isAuthorised('ROLE_USER');
-        }
-
-        $membersPager = $this->getUserManager()->getAllFilteredAtoZUsersPaginated($page, $alpha);
-
-        $crumbs = $this->getCrumbs()
-            ->add($this->trans('crumbs.members'), $this->path('ccdn_user_member_index'));
-
-        return $this->renderResponse('CCDNUserMemberBundle:List:list.html.',
-            array(
-                'crumbs' => $crumbs,
-                'pager_route' => 'ccdn_user_member_alpha_paginated',
-                'pager' => $membersPager,
-                'members' => $membersPager->getCurrentPageResults(),
-                'alpha' => $alpha,
+				'alpha' => $alpha,
             )
         );
     }

@@ -26,16 +26,7 @@
 				{%- endfor -%}
 			</div>
 		</nav>
-		
-		{#{%- if pager.haveToPaginate -%}
-			<div class="btn-toolbar">
-				<nav class="span12 btn-right paginate">
-			    	{{- pagerfanta(pager, 'twitter_bootstrap_compact', {'routeName': pager_route }) -}}
-				</nav>
-			</div>
-		{%- endif -%}
-		#}
-		
+
 		<div class="btn-toolbar">
 			<nav class="span12 btn-right paginate">
 				{{- knp_pagination_render(pager) -}}
@@ -120,15 +111,7 @@
 				{{- knp_pagination_render(pager) -}}
 			</nav>
 		</div>
-		{#
-		{%- if pager.haveToPaginate -%}
-			<div class="btn-toolbar">
-				<nav class="span12 btn-right paginate">
-			    	{{- pagerfanta(pager, 'twitter_bootstrap_compact', {'routeName': pager_route }) -}}
-				</nav>
-			</div>
-		{%- endif -%}
-		#}
+
 	</section>
 
 	{%- endspaceless -%}

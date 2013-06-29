@@ -16,9 +16,6 @@ namespace CCDNUser\MemberBundle\Gateway;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\ORM\QueryBuilder;
 
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Pagerfanta;
-
 use CCDNUser\MemberBundle\Gateway\BaseGatewayInterface;
 
 /**
@@ -147,13 +144,11 @@ abstract class BaseGateway implements BaseGatewayInterface
      * @param  \Doctrine\ORM\QueryBuilder $qb
      * @param  int                        $itemsPerPage
      * @param  int                        $page
-     * @return \Pagerfanta\Pagerfanta
+     * @return \Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination
      */
     public function paginateQuery(QueryBuilder $qb, $itemsPerPage, $page)
     {
-		$pager = $this->paginator->paginate($qb, $page, $itemsPerPage);
-        
-        return $pager;
+		return $this->paginator->paginate($qb, $page, $itemsPerPage);
     }
 
     /**
